@@ -1,0 +1,8 @@
+{
+  "env":{
+    "MONGO_USER":"oscar",
+    "MONGO_PASSWORD":"DaZQQYqKzoU0F73U",
+    "MONGODB":"events-graphql-dev",
+    "PORT":4000
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "graphqlapp",
+  "version": "1.0.0",
+  "description": "An Event booking Appplication",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Oscar Umeh",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react-router-dom": "^4.3.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
