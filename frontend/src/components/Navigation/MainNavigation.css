@@ -8,6 +8,7 @@
   padding: 0 1rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-navigation-logo h1{
@@ -16,7 +17,7 @@
 }
 
 .main-navigation-items{
-  margin-left: 1.5rem;
+ padding: 2rem;
 }
 
 .main-navigation-items ul{
@@ -24,20 +25,32 @@
   list-style: none;
   margin: 0;
   display: flex;
+  align-items: center;
 }
 
 .main-navigation-items li{
   margin: 0 1rem;
 }
 
-.main-navigation-items a{
+.main-navigation-items a,
+.main-navigation-items button{
   text-decoration: none;
   color: white;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  font:inherit;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0;
 }
 
 .main-navigation-items a:hover,
 .main-navigation-items a:active,
-.main-navigation-items a.active{
+.main-navigation-items a.active,
+.main-navigation-items button:active,
+.main-navigation-items button:hover{
   color: black;
-  
+  background-color: white;
+  border-radius: 5px;
 }
