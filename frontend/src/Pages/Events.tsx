@@ -1,10 +1,10 @@
 import * as React from 'react';
-import './Events.css';
-import Modal from '../components/Modal/Modal';
 import Backdrop from '../components/Backdrop/Backdrop';
-import AuthContext from '../context/auth.context';
 import EventList from '../components/Events/EventList/EventList';
+import Modal from '../components/Modal/Modal';
 import Spinner from '../components/Spinner/Spinner';
+import AuthContext from '../context/auth.context';
+import './Events.css';
 
 interface State{
   creating:boolean;
@@ -68,15 +68,21 @@ class Events extends React.Component<object,State>{
 
     let requestBody = {
         query:`
-        mutation{
-          createEvent(eventInput:{title:"${event.title}",date:"${event.date}",price:${event.price},description:"${event.description}"}){
+        mutation CreateEvent($title: String!, $date: String!, $price: Float!, $desc: String!){
+          createEvent(eventInput:{title: $title,date: $date,price: $price,description: $desc}){
             _id
             title
             description
             price
             date
           }
-        }`
+        }`,
+        variables:{
+          title: event.title,
+          date: event.date,
+          price: event.price,
+          desc: event.description
+        }
       };
       const token = this.context.token;
      
@@ -93,12 +99,13 @@ class Events extends React.Component<object,State>{
       }
       return res.json();
     }).then(resData=>{
+      console.log(resData);
       this.setState(prevState=>{
         const updatedEvents = [...prevState.events];
         updatedEvents.push({
           _id:resData.data.createEvent._id,
             title:resData.data.createEvent.title,
-            description:resData.data.creatEvent.description,
+            description:resData.data.createEvent.description,
             date:resData.data.createEvent.date,
             price:resData.data.createEvent.price,
             creator:{
@@ -170,14 +177,17 @@ class Events extends React.Component<object,State>{
     }
     const requestBody ={
       query:`
-        mutation{
-          bookEvent(eventId: "${this.state.selectedEvent._id}"){
+        mutation BookEvent($id: ID!){
+          bookEvent(eventId: $id){
             _id
             createdAt
             updatedAt
           }
         }
-      `
+      `,
+      variables: {
+        id:this.state.selectedEvent._id
+      }
     }
     fetch('http://localhost:4000/api',{
       method:'POST',
