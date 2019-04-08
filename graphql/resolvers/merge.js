@@ -4,7 +4,6 @@ const Event = require('../../models/event');
 const User = require('../../models/user');
 
 const eventLoader = new DataLoader((eventIds)=>{
-  console.log(eventIds);
   return events(eventIds);
 });
 
